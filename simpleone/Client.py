@@ -73,6 +73,7 @@ class Client:
                 logger.debug('content-type: %s', header_content_type)
                 response.headers.get('Content-Type')
                 token = await response.json()
+                logger.debug('token: %s', token)
                 logger.debug('token: %s', token['data']['auth_key'])
                 self.__token = token['data']['auth_key']
         logger.info('Токен получен')
