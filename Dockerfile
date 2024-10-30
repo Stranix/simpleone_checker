@@ -15,7 +15,9 @@ ENV POETRY_VIRTUALENVS_CREATE=false \
 COPY pyproject.toml poetry.lock ./
 RUN poetry install --no-root --no-dev
 
+RUN mkdir -p /app/logs
 COPY alembic /app/alembic
+COPY alembic.ini /app/
 COPY config /app/config
 COPY simpleone /app/simpleone
 COPY src /app/src

@@ -15,6 +15,8 @@ logging.basicConfig(
     level=logging.DEBUG,
     format='[{asctime}] {levelname: >8} : {name}:{funcName: <31} - {message}',
     style='{',
+    filename='logs/fetch_service.log',
+    filemode='a',
 )
 
 

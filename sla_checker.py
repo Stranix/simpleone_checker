@@ -20,6 +20,8 @@ logging.basicConfig(
     level=logging.DEBUG,
     format='[{asctime}] {levelname: >8} : {name}:{funcName: <31} - {message}',
     style='{',
+    filename='logs/sla_checker_service.log',
+    filemode='a',
 )
 
 logger = logging.getLogger('simpleone_sla_checker')

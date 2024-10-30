@@ -21,7 +21,7 @@ services:
       - ./.prod.env
     command: sh -c "alembic upgrade head && python fetch_simpleone.py --groups 'config/our_groups.json' --req_params 'config/req_params.json'"
     volumes:
-      - .:/app
+      - ./logs:/app/logs
 
   sla_checker:
     build:
@@ -33,7 +33,7 @@ services:
       - ./.prod.env
     command: sh -c "alembic upgrade head && python sla_checker.py"
     volumes:
-      - .:/app
+      - ./logs:/app/logs
 
 
 volumes:
