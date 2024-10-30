@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: app_postgres
+    environment:
+      POSTGRES_USER: 'simpleone'
+      POSTGRES_PASSWORD: 'qwerty'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+
+  fetch_simpleone:
+    build:
+      context: .
+    depends_on:
+      - postgres
+    env_file:
+      - ./.prod.env
+    command: sh -c "alembic upgrade head && python fetch_simpleone.py --groups 'config/our_groups.json' --req_params 'config/req_params.json'"
+    volumes:
+      - .:/app
+
+  sla_checker:
+    build:
+      context: .
+    depends_on:
+      - postgres
+    env_file:
+      - ./.prod.env
+    command: sh -c "alembic upgrade head && python sla_checker.py"
+    volumes:
+      - .:/app
+
+
+volumes:
+  postgres_data:
