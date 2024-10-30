@@ -18,7 +18,7 @@ async def sla_new_task_notify(task: SimpleOneTask) -> str:
     sla = format_to_moscow_time_as_str(task.sla_term)
     notify = (
         f'У заявки <code>{task.number}</code> истекает срок SLA\n'
-        f'Выполнить до: <code>{sla}</code>'
+        f'Выполнить до: <code>{sla}</code>\n\n'
     )
     logger.debug('notify: %s', notify)
     return notify
