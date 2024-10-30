@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "simpleone_integration"
+version = "0.1.0"
+description = ""
+authors = ["Stranix <Phantom2525@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = {extras = ["standard"], version = "^0.115.3"}
+pydantic-settings = "^2.6.0"
+python-multipart = "^0.0.12"
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.36"}
+asyncpg = "^0.30.0"
+alembic = "^1.13.3"
+aiohttp = "^3.10.10"
+orjson = "^3.10.10"
+aiogram = "^3.13.1"
+pytz = "^2024.2"
+pydantic = "^2.9.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
