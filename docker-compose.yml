@@ -12,6 +12,7 @@ services:
   fetch_simpleone:
     build:
       context: .
+    restart: unless-stopped  
     depends_on:
       - postgres
     extra_hosts:
@@ -25,6 +26,7 @@ services:
   sla_checker:
     build:
       context: .
+    restart: unless-stopped  
     depends_on:
       - postgres
     env_file:
