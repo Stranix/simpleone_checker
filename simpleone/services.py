@@ -96,7 +96,6 @@ async def fetch_simpleone_tasks(groups: dict, req_params: dict):
             notifications.append(await notify.new_task_notify(new_task))
         await db.save_tasks_in_db(sorted_tasks.new, db_session)
 
-        notifications.extend(await create_tasks_notify(sorted_tasks.changed))
         await db.update_tasks_in_base(sorted_tasks.changed, db_session)
 
         tasks_for_closing = await get_missing_tasks(tasks, db_session)
@@ -104,7 +103,7 @@ async def fetch_simpleone_tasks(groups: dict, req_params: dict):
 
         logger.debug('message_for_send: %s', '\n'.join(notifications))
         await notify.send_tg_notify(
-            settings.telegram.notify_chat_id,
+            settings.telegram.dispatchers_chat_id,
             notifications,
         )
     return sorted_tasks

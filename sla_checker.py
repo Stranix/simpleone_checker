@@ -54,8 +54,9 @@ async def main():
                 await db_session.flush()
             await db_session.commit()
         logger.debug('Сообщения для отправки: %s', notify)
-        await send_tg_notify(settings.telegram.notify_chat_id, notify)
-        time.sleep(300)
+        await send_tg_notify(settings.telegram.dispatchers_chat_id, notify)
+        await send_tg_notify(settings.telegram.alert_chat_id, notify)
+        time.sleep(5 * 60)
         await db_helper.dispose()
 
 

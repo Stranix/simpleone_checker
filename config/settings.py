@@ -10,7 +10,8 @@ BASE_DIR = Path(__file__).parent
 
 class TelegramConfig(BaseModel):
     bot_token: str
-    notify_chat_id: int
+    dispatchers_chat_id: int
+    alert_chat_id: int
 
 
 class SimpleOneConfig(BaseModel):
